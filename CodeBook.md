@@ -1,6 +1,6 @@
 CodeBook.md
 The Data had to be read in, combined training and test data and then combined with the activity and subject data.  After that the data was extracted with the following variables associated with means and standard deviations (searching for those values in the master combined column names).  Then a second dataset was created to calculate the average for each activity and each subject.
-Variables: include the following columns (column index numbers indicated after quote close:
+#Variables: include the following columns (column index numbers indicated after quote close:
 
 "tBodyAcc-mean()-X" 1
 "tBodyAcc-mean()-Y" 2
@@ -36,7 +36,7 @@ Variables: include the following columns (column index numbers indicated after q
 "fBodyBodyGyroMag-mean()"    529 
 "fBodyBodyGyroJerkMag-mean()" 542
 
-Activity Labels:
+#Activity Labels:
 1   WALKING
 2   WALKING_UPSTAIRS
 3   WALKING_DOWNSTAIRS
