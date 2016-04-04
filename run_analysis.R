@@ -1,8 +1,11 @@
+library("dplyr")
+
 #Step 0: Download file, unzip file, and read in files.
 #Download the file:
         fileURL<-"https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip"
         destfile <- "dataset.zip"
         download.file(fileURL,destfile)
+        
         
 # unzip the file:
         unzip(destfile)
@@ -23,9 +26,9 @@
         subject_all <-rbind(subject_train,subject_test)
         colnames(x_all) <- features[,2]
         all <- cbind(x_all,y_all,subject_all)
-        all <- rename(all, activities = v1, subject = v1.1)
-        #colnames(all[562:563]) <- c("activities","subject")
-        
+        #all <- rename(all, "activities" = names(all[562]), "subject" = names(all[563]))
+        colnames(all) [562] <- c("activities")
+        colnames(all) [563] <- c("subject")
         
         
 #Step 2: Extract only the measurements on the mean and standard deviation for each measurement. 
@@ -35,11 +38,11 @@
 #Step 3: Uses descriptive activity names to name the activities in the data set.
         names(all)[562] <- "activities"
         
-        
+         
 #Step 4: Appropriately labels the data set with descriptive variable names. 
         names(all)[563] <- "subject"
         
 #Step 5: From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
-        indytidydataset <- all[, 3:dim(all)[2]] 
-        indytidydatasetmean <- aggregate(indytidydataset,list(all$subject, all$activities), mean)        
+        indytidydataset <- grep("mean\\(\\)", names(all))
+                indytidydatasetmean <- all[, indytidydataset]       
         write.table(indytidydatasetmean,"./tidydataset.txt")
