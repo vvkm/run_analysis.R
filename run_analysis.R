@@ -43,6 +43,6 @@ library("dplyr")
         names(all)[563] <- "subject"
         
 #Step 5: From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
-        indytidydataset <- grep("mean\\(\\)", names(all))
+        indytidydataset <- grep("mean\\(\\)|activities|subject", names(all))
                 indytidydatasetmean <- all[, indytidydataset]       
         write.table(indytidydatasetmean,"./tidydataset.txt")
