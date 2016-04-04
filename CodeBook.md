@@ -1,40 +1,93 @@
 #CodeBook.md
-The Data had to be read in, combined training and test data and then combined with the activity and subject data.  After that the data was extracted with the following variables associated with means and standard deviations (searching for those values in the master combined column names).  Then a second dataset was created to calculate the average for each activity and each subject.
+##Orignal Data Source
+
+The data for this comes from UC Irvine Machine Learning Repository.  The data comes from experiments have been carried out with a group of 30 volunteers within an age bracket of 19-48 years. Each person performed six activities (WALKING, WALKING_UPSTAIRS, WALKING_DOWNSTAIRS, SITTING, STANDING, LAYING) wearing a smartphone (Samsung Galaxy S II) on the waist. Using its embedded accelerometer and gyroscope, they captured 3-axial linear acceleration and 3-axial angular velocity at a constant rate of 50Hz. The experiments have been video-recorded to label the data manually. The obtained dataset has been randomly partitioned into two sets, where 70% of the volunteers was selected for generating the training data and 30% the test data. 
+
+Source: http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones
+
+Original data set citation:
+
+Davide Anguita, Alessandro Ghio, Luca Oneto, Xavier Parra and Jorge L. Reyes-Ortiz. A Public Domain Dataset for Human Activity Recognition Using Smartphones. 21th European Symposium on Artificial Neural Networks, Computational Intelligence and Machine Learning, ESANN 2013. Bruges, Belgium 24-26 April 2013. 
+
+The raw data was extracted from: https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip
+
 #Variables: include the following columns (column index numbers indicated after quote close:
 
-"tBodyAcc-mean()-X" 1
-"tBodyAcc-mean()-Y" 2
-"tBodyAcc-mean()-Z" 3
-"tGravityAcc-mean()-X"  41 
-"tGravityAcc-mean()-Y"  42
-"tGravityAcc-mean()-Z"  43
-"tBodyAccJerk-mean()-X" 81
-"tBodyAccJerk-mean()-Y" 82
-"tBodyAccJerk-mean()-Z" 83 
-"tBodyGyro-mean()-X"    121  
-"tBodyGyro-mean()-Y"    122 
-"tBodyGyro-mean()-Z"    123 
-"tBodyGyroJerk-mean()-X" 161 
-"tBodyGyroJerk-mean()-Y" 162 
-"tBodyGyroJerk-mean()-Z" 163 
-"tBodyAccMag-mean()"     201 
-"tGravityAccMag-mean()"  214 
-"tBodyAccJerkMag-mean()" 227 
-"tBodyGyroMag-mean()"    240 
-"tBodyGyroJerkMag-mean()" 253      
-"fBodyAcc-mean()-X"      266 
-"fBodyAcc-mean()-Y"      267 
-"fBodyAcc-mean()-Z"      268 
-"fBodyAccJerk-mean()-X"  345 
-"fBodyAccJerk-mean()-Y"  346 
-"fBodyAccJerk-mean()-Z"  347 
-"fBodyGyro-mean()-X"     424 
-"fBodyGyro-mean()-Y"     425 
-"fBodyGyro-mean()-Z"     426 
-"fBodyAccMag-mean()"     503 
-"fBodyBodyAccJerkMag-mean()" 516 
-"fBodyBodyGyroMag-mean()"    529 
-"fBodyBodyGyroJerkMag-mean()" 542
+"tBodyAcc-mean()-X" 
+"tBodyAcc-mean()-Y" 
+"tBodyAcc-mean()-Z" 
+"tGravityAcc-mean()-X" 
+"tGravityAcc-mean()-Y" 
+"tGravityAcc-mean()-Z" 
+"tBodyAccJerk-mean()-X" 
+"tBodyAccJerk-mean()-Y" 
+"tBodyAccJerk-mean()-Z" 
+"tBodyGyro-mean()-X" 
+"tBodyGyro-mean()-Y" 
+"tBodyGyro-mean()-Z" 
+"tBodyGyroJerk-mean()-X" 
+"tBodyGyroJerk-mean()-Y" 
+"tBodyGyroJerk-mean()-Z" 
+"tBodyAccMag-mean()" 
+"tGravityAccMag-mean()" 
+"tBodyAccJerkMag-mean()" 
+"tBodyGyroMag-mean()" 
+"tBodyGyroJerkMag-mean()" 
+"fBodyAcc-mean()-X" 
+"fBodyAcc-mean()-Y" 
+"fBodyAcc-mean()-Z" 
+"fBodyAccJerk-mean()-X" 
+"fBodyAccJerk-mean()-Y" 
+"fBodyAccJerk-mean()-Z" 
+"fBodyGyro-mean()-X" 
+"fBodyGyro-mean()-Y" 
+"fBodyGyro-mean()-Z" 
+"fBodyAccMag-mean()" 
+"fBodyBodyAccJerkMag-mean()" 
+"fBodyBodyGyroMag-mean()" 
+"fBodyBodyGyroJerkMag-mean()" 
+"activities" 
+"subject"
+
+#Definitions of features:
+The features selected for this database come from the accelerometer and gyroscope 3-axial raw signals tAcc-XYZ and tGyro-XYZ. These time domain signals (prefix 't' to denote time) were captured at a constant rate of 50 Hz. Then they were filtered using a median filter and a 3rd order low pass Butterworth filter with a corner frequency of 20 Hz to remove noise. Similarly, the acceleration signal was then separated into body and gravity acceleration signals (tBodyAcc-XYZ and tGravityAcc-XYZ) using another low pass Butterworth filter with a corner frequency of 0.3 Hz. 
+
+Subsequently, the body linear acceleration and angular velocity were derived in time to obtain Jerk signals (tBodyAccJerk-XYZ and tBodyGyroJerk-XYZ). Also the magnitude of these three-dimensional signals were calculated using the Euclidean norm (tBodyAccMag, tGravityAccMag, tBodyAccJerkMag, tBodyGyroMag, tBodyGyroJerkMag). 
+
+Finally a Fast Fourier Transform (FFT) was applied to some of these signals producing fBodyAcc-XYZ, fBodyAccJerk-XYZ, fBodyGyro-XYZ, fBodyAccJerkMag, fBodyGyroMag, fBodyGyroJerkMag. (Note the 'f' to indicate frequency domain signals). 
+
+These signals were used to estimate variables of the feature vector for each pattern:  
+'-XYZ' is used to denote 3-axial signals in the X, Y and Z directions.
+
+tBodyAcc-XYZ
+tGravityAcc-XYZ
+tBodyAccJerk-XYZ
+tBodyGyro-XYZ
+tBodyGyroJerk-XYZ
+tBodyAccMag
+tGravityAccMag
+tBodyAccJerkMag
+tBodyGyroMag
+tBodyGyroJerkMag
+fBodyAcc-XYZ
+fBodyAccJerk-XYZ
+fBodyGyro-XYZ
+fBodyAccMag
+fBodyAccJerkMag
+fBodyGyroMag
+fBodyGyroJerkMag
+
+The set of variables that were estimated from these signals are: 
+
+mean(): Mean value
+
+Additional vectors obtained by averaging the signals in a signal window sample. These are used on the angle() variable:
+
+gravityMean
+tBodyAccMean
+tBodyAccJerkMean
+tBodyGyroMean
+tBodyGyroJerkMean
 
 #Activity Labels:
 1   WALKING
@@ -43,3 +96,6 @@ The Data had to be read in, combined training and test data and then combined wi
 4   SITTING
 5   STANDING
 6   LAYING
+
+#Subject Labels:
+1-30 - indicates which subject was performing the test.
